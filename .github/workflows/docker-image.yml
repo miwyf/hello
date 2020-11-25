@@ -16,6 +16,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
+      env:
+        # Use ${{ secrets.GITHUB_TOKEN }} by default.
+        # Use GitHub Personal Access Token ${{ secrets.REPO_ACCESS_TOKEN }} if you
+        # want to trigger another workflow by this step.
+        GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+        WITH_V: false
       id: tag_dev
       run: |
         #docker run --privileged --rm docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
