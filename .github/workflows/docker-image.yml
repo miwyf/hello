@@ -22,6 +22,7 @@ jobs:
         #docker run --rm --privileged tonistiigi/binfmt:latest --install all
         #docker buildx create --use --name=mybuilder-cn --driver docker-container --driver-opt image=dockerpracticesig/buildkit:master
         #docker login --username xingyuewang --password e9368fda-82ae-4e01-9b27-7f3e2f8f3ad2
+        #echo "${{ secrets.PASSWORD }}" | docker login $REG -u "${{ secrets.USERNAME }}" --password-stdin
         #docker buildx build --platform linux/arm,linux/arm64,linux/amd64 -t docker.io/xingyuewang/hello:1.0 -t docker.io/xingyuewang/hello:latest . --push
         echo "======================="
         echo "tag:"  ${{ github.ref }}
