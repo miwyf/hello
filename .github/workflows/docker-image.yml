@@ -1,0 +1,43 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - '*.*'
+  pull_request: ~
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      id: tag_dev
+      run: |
+        #docker run --privileged --rm docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
+        #docker run --rm --privileged tonistiigi/binfmt:latest --install all
+        #docker buildx create --use --name=mybuilder-cn --driver docker-container --driver-opt image=dockerpracticesig/buildkit:master
+        #docker login --username xingyuewang --password e9368fda-82ae-4e01-9b27-7f3e2f8f3ad2
+        #docker buildx build --platform linux/arm,linux/arm64,linux/amd64 -t docker.io/xingyuewang/hello:1.0 -t docker.io/xingyuewang/hello:latest . --push
+        echo "======================="
+        echo "tag:"  ${{ github.ref }}
+        echo "======================="
+        
+        # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        # Strip "v" prefix from tag name
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+        # Use Docker `latest` tag convention
+        [ "$VERSION" == "master" ] && VERSION=latest
+        echo IMAGE_ID=$DOCKER_REG
+        echo VERSION=$VERSION
+        #docker tag image $DOCKER_REG:$VERSION
+        #docker push $DOCKER_REG:$VERSION
+        
+      
+
+    
