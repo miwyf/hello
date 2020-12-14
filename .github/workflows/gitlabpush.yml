@@ -19,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v1
-      - uses: spyoungtech/mirror-action@master
+      - uses: spyoungtech/mirror-action@v0.3.0
         with:
           REMOTE: 'https://web.wyf.wiki:10443/lewei/hello.git'
           GIT_USERNAME: lewei
