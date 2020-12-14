@@ -19,9 +19,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v1
-      - uses: spyoungtech/mirror-action@master
+      - name: mirror-repository
+        uses: spyoungtech/mirror-action@master
         with:
           REMOTE: 'https://web.wyf.wiki:10443/lewei50/hello.git'
           GIT_USERNAME: lewei
           GIT_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
-  
+      - name: Build Push 
+        run: |
+          git config --global --unset http.proxy
