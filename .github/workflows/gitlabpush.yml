@@ -22,5 +22,5 @@ jobs:
           REMOTE: ssh://git@web.wyf.wiki:10022/lewei50/hello.git
           GIT_SSH_PRIVATE_KEY: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
           GIT_SSH_NO_VERIFY_HOST: "true"
-
+          DEBUG: "true"
   
