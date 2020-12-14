@@ -17,7 +17,7 @@ jobs:
             ${{ secrets.GITLAB_SSH_PRIVATE_KEY  }}
 
   mirror_to_gitlab:
-    runs-on: alpine:3.10
+    runs-on: ubuntu-16.04
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v1
