@@ -16,4 +16,4 @@ jobs:
           target_repo_url:
             ssh://git@web.wyf.wiki:10022/lewei50/hello.git
           ssh_private_key:
-            ${{ secrets.GITLAB_PASSWORD }}
+            ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
