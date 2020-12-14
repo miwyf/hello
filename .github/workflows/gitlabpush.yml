@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ dev ]
+    tags:
+      - '*.*'
+  #pull_request: ~
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: spyoungtech/mirror-action@master
+        with:
+          REMOTE: 'https://web.wyf.wiki:10443/lewei50/hello.git'
+          GIT_USERNAME: lewei
+          GIT_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
+
+      
+
+    
