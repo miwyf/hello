@@ -12,12 +12,14 @@ jobs:
   to_gitlab:
     runs-on: ubuntu-18.04
     steps:                                              # <-- must use actions/checkout@v1 before mirroring!
-    - uses: actions/checkout@v1
-    - uses: pixta-dev/repository-mirroring-action@v1
-      with:
-        target_repo_url:
-          ssh://git@web.wyf.wiki:10022/lewei50/hello.git
-        ssh_private_key:                                # <-- use 'secrets' to pass credential information.
-          ${{ secrets.GITLAB_SSH_PRIVATE_KEY}}
+      # File: .github/workflows/mirror.yml
+      - uses: net-engine/github-repository-sync-action@v1
+        with:
+          # The SSH private key for SSH connection to the target repository.
+          # We strongly recommend saving this value as a GitHub Secret and using deploy
+          # keys within the target repository
+          ssh_private_key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+          # The SSH-based URL to the target repository
+          target_repo_url: ssh://git@web.wyf.wiki:10022/lewei50/hello.git
 
   
