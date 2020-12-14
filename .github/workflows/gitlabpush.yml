@@ -20,8 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: mirror-repository
-        run: |
-          git config --global --unset http.proxy
+        #run: |
+          #git config --global --unset http.proxy
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_ALL }}
       - uses: spyoungtech/mirror-action@master
         with:
           REMOTE: 'https://web.wyf.wiki:10443/lewei50/hello.git'
