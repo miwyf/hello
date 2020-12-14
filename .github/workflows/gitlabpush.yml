@@ -17,6 +17,7 @@ jobs:
           REMOTE: 'https://web.wyf.wiki:10443/lewei50/hello.git'
           GIT_USERNAME: lewei
           GIT_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
+          DEBUG: true
         #env:
           #GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
