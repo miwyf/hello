@@ -18,12 +18,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v1
-    - name: mirror-repository
-      uses: spyoungtech/mirror-action@v0.4.0
-      with:
-        REMOTE: ssh://git@web.wyf.wiki:10022/lewei50/hello.git
-        GIT_SSH_PRIVATE_KEY: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
-        GIT_SSH_NO_VERIFY_HOST: "true"
-        DEBUG: "true"
+      - uses: actions/checkout@v1
+      - uses: spyoungtech/mirror-action@master
+        with:
+          REMOTE: 'https://web.wyf.wiki:10443/lewei50/hello.git'
+          GIT_USERNAME: lewei
+          GIT_PASSWORD: ${{ GITLAB_PASSWORD }}
   
